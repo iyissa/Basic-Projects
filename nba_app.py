@@ -80,13 +80,11 @@ def convert(names):
     name_list = [name.strip() for name in names.split(",")]
     return name_list
 
-soft = st.text_input(" ")
+user_input = st.text_input(" ")
 
-very_soft = str(soft)
+user_input_str = str(user_input)
 
-yo = convert(very_soft)
-print(yo)
+basketball_players = convert(user_input_str)
 
-#print(edit_make_dataset(yo))
-everything(yo)
+everything(basketball_players)
 st.pyplot()
