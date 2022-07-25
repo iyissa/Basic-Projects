@@ -82,9 +82,7 @@ def convert(names):
 
 user_input = st.text_input(" ")
 
-user_input_str = str(user_input)
-
-basketball_players = convert(user_input_str)
-
-everything(basketball_players)
-st.pyplot()
+if user_input:
+       user_str = convert(user_input)
+       everything(user_str)
+       st.pyplot()
