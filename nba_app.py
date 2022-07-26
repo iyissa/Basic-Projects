@@ -10,8 +10,20 @@ warnings.filterwarnings('ignore')
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+st.markdown("""
+This web-app makes visualizations of Points-per-game (PPG) and Assists-per-game (APG)
+
+* **Python libraries:** nba_api, pandas, streamlit, seaborn
+""")
+
 st.write("""
-Hello """)
+**How to use:**
+Simply type in the correct player names in the input box and press enter.
+e.g Kevin Durant, Stephen Curry, Lebron James, Luka Doncic
+
+***This only works for players that played in the last season***
+
+A visualization showing the PPG and APG of players for easy comparison comes up.""")
 
 def get_player_data(id):
     player_id = commonplayerinfo.CommonPlayerInfo(id)
@@ -62,6 +74,7 @@ def plot_viz(viz_dataset):
     ax.legend(ncol=2, loc="lower right", frameon=True)
     ax.set(xlim=(0, 30), ylabel="Players", xlabel="Per Game Stats")
     sns.despine(left=True, bottom=True)
+    return f, ax 
 
 def everything(data):
     final_player_id = edit_multiple_player_id(player_list=data)
@@ -73,8 +86,9 @@ def everything(data):
 
     print("Plotting Visualization ...")
 
-    plot_viz(viz_dataset=final_player_dataset)
-    print("My work here is done chief")
+    f, _ = plot_viz(viz_dataset=final_player_dataset)
+    #print("My work here is done chief")
+    return f
 
 def convert(names):
     name_list = [name.strip() for name in names.split(",")]
