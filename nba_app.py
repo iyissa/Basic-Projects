@@ -87,7 +87,6 @@ def everything(data):
     print("Plotting Visualization ...")
 
     f, _ = plot_viz(viz_dataset=final_player_dataset)
-    #print("My work here is done chief")
     return f
 
 def convert(names):
